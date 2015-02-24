@@ -6,8 +6,9 @@ gem 'cucumber-sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'sinatra'
+gem 'database_cleaner'
 
-group :test do 
+group :test do
   gem 'rspec'
 end
 
