@@ -4,5 +4,11 @@ gem 'capybara'
 gem 'cucumber'
 gem 'cucumber-sinatra'
 gem 'data_mapper'
-gem 'rspec'
+gem 'dm-postgres-adapter'
 gem 'sinatra'
+
+group :test do 
+  gem 'rspec'
+end
+
+
