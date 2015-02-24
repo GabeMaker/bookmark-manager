@@ -2,7 +2,9 @@
 Bookmark manager project for Makers Academy
 
 Features:
-  As a user 
+
+
+  As a user
   So that I can find web sites that I recently bookmarked
   I would like to see a reverse chronological list of links on the site homepage
 
@@ -16,4 +18,4 @@ Features:
 
   As a user
   So that I can sort through my links with ease
-  I would like to be able tyo filter links by tag 
+  I would like to be able tyo filter links by tag
