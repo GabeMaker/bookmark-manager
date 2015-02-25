@@ -119,6 +119,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   capybara
   cucumber
   cucumber-sinatra
