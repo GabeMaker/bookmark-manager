@@ -7,8 +7,8 @@ class User
   attr_reader :password
   attr_accessor :password_confirmation
 
-  validates_uniqueness_of :email
-  validates_confirmation_of :password
+  validates_uniqueness_of :email, :message => "This email is already taken"
+  validates_confirmation_of :password, :message => "Sorry, your passwords don't match"
 
 
   property :id, Serial
