@@ -3,6 +3,7 @@ require 'data_mapper'
 require './lib/link'
 require './lib/tag'
 require './lib/user'
+require 'rack-flash'
 
 require_relative 'helpers/application'
 require_relative 'data_mapper_setup'
@@ -11,6 +12,7 @@ class BMarkManager < Sinatra::Base
 
   enable :sessions
   set    :session_secret, 'super secret'
+  use Rack::Flash
 
   get '/' do
     @links = Link.all
@@ -34,15 +36,21 @@ class BMarkManager < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb :"users/new"
   end
 
   post '/users' do
-    user = User.create(:email => params[:email],
-                       :password => params[:password],
-                       :password_confirmation => params[:password_confirmation])
-    session[:user_id] = user.id
-    redirect to('/')
+    @user = User.new(:email => params[:email],
+                    :password => params[:password],
+                    :password_confirmation => params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect to('/')
+    else
+      flash[:notice] = "Sorry, your passwords don't match"
+      erb :"users/new"
+    end
   end
 
   # start the server if ruby file executed directly
